@@ -4,17 +4,17 @@
 **Role:** Security Analyst / Systems Engineer  
 **Technologies:** Wazuh Manager, Wazuh Agent, VMware Workstation Pro, Windows 11, Linux, File Integrity Monitoring (FIM), PCI DSS, GDPR  
 
-## 📌 1. Introduction
+## 1. Introduction
 This report details the successful setup, configuration, and validation of a Wazuh-based endpoint security monitoring solution. The goal of this assessment was to create a Wazuh Manager virtual machine on a Windows host, deploy a Windows endpoint agent, set up security monitoring policies, and confirm that security events and compliance data are accurately collected and displayed in the Wazuh Dashboard. The implementation shows a practical understanding of Security Information and Event Management (SIEM), endpoint monitoring, and regulatory compliance concepts.
 
-## 🏗️ 2. Environment and Prerequisites
+##  2. Environment and Prerequisites
 ### 2.1 Host and Virtualization Environment
 *   **Host Operating System:** Windows 11
 *   **Virtualization Platform:** VMware Workstation Pro
 
 ---
 
-## 🚀 3. Wazuh Manager Deployment
+## 3. Wazuh Manager Deployment
 
 ### Importing the Wazuh OVA
 The Wazuh Manager was set up by importing the official OVA file into VMware using the open Virtual Machine option. The default settings were checked and adjusted to meet the minimum system requirements.
@@ -58,7 +58,7 @@ After waiting 5 minutes, I tried accessing the dashboard in the browser again an
 
 ---
 
-## 🛡️ 4. Windows Endpoint Agent Deployment
+## 4. Windows Endpoint Agent Deployment
 
 Inside the Wazuh Dashboard, I clicked the **"Deploy new agent"** button to generate an installation command for my Windows 11 host. 
 
@@ -88,7 +88,7 @@ After installation, the Windows endpoint appeared in the Wazuh Dashboard with an
 
 ---
 
-## 📁 5. File Integrity Monitoring (FIM) Configuration
+## 5. File Integrity Monitoring (FIM) Configuration
 
 I created a folder in my Downloads directory called `FIMtest`, and inside it, a text document named `testfile.txt`. 
 
@@ -111,7 +111,7 @@ These actions successfully generated real-time FIM alerts within the Wazuh Dashb
 
 ---
 
-## 📊 6. Monitoring and Alert Verification
+## 6. Monitoring and Alert Verification
 
 ### 6.1 File Integrity Monitoring Alerts
 The Wazuh Dashboard successfully captured the FIM alerts. Alerts related to file modifications and deletions were observed and mapped to relevant rule IDs.
@@ -125,7 +125,7 @@ The Wazuh Dashboard successfully captured the FIM alerts. Alerts related to file
 
 ---
 
-## 📜 7. Regulatory Compliance Monitoring
+## 7. Regulatory Compliance Monitoring
 
 ### 7.1 Compliance Dashboards
 The **GDPR** and **PCI DSS** compliance dashboards were accessed to observe how the collected security events relate directly to regulatory requirements, highlighting Wazuh’s capability to support compliance auditing.
@@ -139,7 +139,7 @@ Security events were filtered using compliance tags (`rule.pci_dss:*`) to show o
 
 ---
 
-## 🛠️ 8. Challenges Encountered and Resolutions
+## 8. Challenges Encountered and Resolutions
 
 During the setup, delays in service startup and connectivity issues arose due to limited system resources and IP address changes after VM restarts. These problems were fixed by:
 *   **Service Tuning:** Adjusting system service timeouts.
@@ -150,6 +150,6 @@ This troubleshooting significantly improved my understanding of service dependen
 
 ---
 
-## 🎯 9. Conclusion
+## 9. Conclusion
 The assessment goals were fully achieved. The Wazuh Manager was deployed, a Windows endpoint agent was connected, File Integrity Monitoring was configured and tested, and security/compliance events were validated through the dashboard. This implementation showcases a functional endpoint security monitoring solution capable of detecting file changes, collecting security logs, and supporting automated compliance monitoring.
 
