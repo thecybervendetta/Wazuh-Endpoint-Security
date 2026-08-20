@@ -19,7 +19,7 @@ This report details the successful setup, configuration, and validation of a Waz
 ### Importing the Wazuh OVA
 The Wazuh Manager was set up by importing the official OVA file into VMware using the open Virtual Machine option. The default settings were checked and adjusted to meet the minimum system requirements.
 
-![VMware Import Screen](wazuh-images/page_1_img_1.png)
+![VMware Import Screen](wazuh-images/page_1_img_1.jpeg)
 
 ### 3.1 Wazuh Manager Virtual Machine Specs
 *   **Appliance:** Official Wazuh OVA (version 4.14.1)
@@ -29,12 +29,12 @@ The Wazuh Manager was set up by importing the official OVA file into VMware usin
     *   Storage: 50 GB
 *   **Network Mode:** Bridged Adapter (as configured)
 
-![VM Settings](wazuh-images/page_2_img_1.png)
+![VM Settings](wazuh-images/page_2_img_1.jpeg)
 
 ### 3.2 Initial Login and IP Address Discovery
 After starting the VM, the system was accessed through the terminal using the default credentials. The assigned IP address was found using the `ip a` command (`192.168.128.169`). This IP address is necessary for dashboard access and agent registration.
 
-![IP Discovery](wazuh-images/page_2_img_2.png)
+![IP Discovery](wazuh-images/page_2_img_2.jpeg)
 
 ### 3.3 Dashboard Access & Troubleshooting
 I attempted to use a web browser on the Windows host to access the Wazuh Dashboard via HTTPS with the VM’s IP address (`192.168.128.169`) but it was failing. I did some troubleshooting via the terminal:
@@ -45,7 +45,7 @@ sudo systemctl status wazuh-manager
 sudo systemctl status wazuh-dashboard
 ```
 
-![Failing Services](wazuh-images/page_3_img_1.png)
+![Failing Services](wazuh-images/page_3_img_1.jpeg)
 
 I found out that only the `wazuh-dashboard` service was running; the `wazuh-indexer` and `wazuh-manager` were failing. I had to manually start them with the following commands:
 ```bash
@@ -54,7 +54,7 @@ sudo systemctl start wazuh-manager
 ```
 After waiting 5 minutes, I tried accessing the dashboard in the browser again and successfully logged in with the default credentials (`admin:admin`), confirming the services were fully operational.
 
-![Dashboard Login](wazuh-images/page_3_img_2.png)
+![Dashboard Login](wazuh-images/page_3_img_2.jpeg)
 
 ---
 
@@ -74,7 +74,7 @@ Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.1
 ### 4.2 Agent Installation on Windows Endpoint
 The generated PowerShell command was run on the Windows endpoint with administrator permissions. The installation completed silently.
 
-![PowerShell Execution](wazuh-images/page_5_img_1.png)
+![PowerShell Execution](wazuh-images/page_5_img_1.jpeg)
 
 I then started the service manually using:
 ```cmd
@@ -84,7 +84,7 @@ net start wazuh
 ### 4.3 Agent Connectivity Verification
 After installation, the Windows endpoint appeared in the Wazuh Dashboard with an **Active** status, confirming successful communication between the agent and the manager.
 
-![Active Agent](wazuh-images/page_6_img_1.png)
+![Active Agent](wazuh-images/page_6_img_1.jpeg)
 
 ---
 
@@ -121,7 +121,7 @@ The Wazuh Dashboard successfully captured the FIM alerts. Alerts related to file
 | **File Modified** | Detected change in file content/attributes | `550` |
 | **File Deleted** | Detected removal of monitored file | `553` |
 
-![FIM Alerts](wazuh-images/page_8_img_1.png)
+![FIM Alerts](wazuh-images/page_8_img_1.jpeg)
 
 ---
 
@@ -130,12 +130,12 @@ The Wazuh Dashboard successfully captured the FIM alerts. Alerts related to file
 ### 7.1 Compliance Dashboards
 The **GDPR** and **PCI DSS** compliance dashboards were accessed to observe how the collected security events relate directly to regulatory requirements, highlighting Wazuh’s capability to support compliance auditing.
 
-![PCI DSS Dashboard](wazuh-images/page_8_img_2.png)
+![PCI DSS Dashboard](wazuh-images/page_8_img_2.jpeg)
 
 ### 7.2 Compliance Event Filtering
 Security events were filtered using compliance tags (`rule.pci_dss:*`) to show only events relevant to specific regulations.
 
-![Compliance Filtering](wazuh-images/page_9_img_1.png)
+![Compliance Filtering](wazuh-images/page_9_img_1.jpeg)
 
 ---
 
@@ -152,3 +152,4 @@ This troubleshooting significantly improved my understanding of service dependen
 
 ## 🎯 9. Conclusion
 The assessment goals were fully achieved. The Wazuh Manager was deployed, a Windows endpoint agent was connected, File Integrity Monitoring was configured and tested, and security/compliance events were validated through the dashboard. This implementation showcases a functional endpoint security monitoring solution capable of detecting file changes, collecting security logs, and supporting automated compliance monitoring.
+
